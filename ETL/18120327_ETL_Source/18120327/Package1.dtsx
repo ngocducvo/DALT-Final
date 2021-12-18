@@ -1,0 +1,516 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/9/2021 1:54:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ZDEP"
+  DTS:CreatorName="ZDEP\ASUS"
+  DTS:DTSID="{1DE6B1BE-B16F-4149-A4E0-F80918CFE1CC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{45C8CC18-7DB1-467D-BEC4-7AE33EEBB9F6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Stage_HW7]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}"
+      DTS:ObjectName="LocalHost.Stage_HW7">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Stage_HW7;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[profilingtask.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5ADF70B1-AF8E-4A28-BCCF-F02A84A5380E}"
+      DTS:ObjectName="profilingtask.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\HomeWork\4-1\BI\18120327_HW#8\profilingtask.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Profiling Task"
+      DTS:CreationName="Microsoft.DataProfilingTask"
+      DTS:Description="Data Profiling Task"
+      DTS:DTSID="{EFE5990E-7038-47FB-8681-72A960154029}"
+      DTS:ExecutableType="Microsoft.DataProfilingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Profiling Task"
+      DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <DataProfilingTaskData
+          Destination="profilingtask.xml"
+          OverwriteDestination="True">
+          <ProfileInput><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<DataProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
+  <ProfileVersion>1.0</ProfileVersion>
+  <DataSources />
+  <DataProfileInput>
+    <ProfileMode>Exact</ProfileMode>
+    <Timeout>0</Timeout>
+    <Requests>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_Jade_Stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq1">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq1">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq1">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq1">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq1">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="ChiTietHoaDon_WebTower9_Stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq2">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="CuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq2">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="CuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq2">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="CuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq2">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="CuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq2">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="CuaHang_Jupiter_stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq3">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq3">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq3">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq3">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_Jade_Stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq3">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_Jade_Stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq4">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq4">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq4">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq4">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_WebTower9_Stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq4">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="HoaDon_WebTower9_Stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq5">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_Jade_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq5">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_Jade_Stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq5">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_Jade_Stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq5">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_Jade_Stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq5">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_Jade_Stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq6">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_WebTower9_stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq6">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_WebTower9_stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq6">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_WebTower9_stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq6">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_WebTower9_stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq6">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="KhachHang_WebTower9_stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq7">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiCuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq7">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiCuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq7">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiCuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq7">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiCuaHang_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq7">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiCuaHang_Jupiter_stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq8">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiSanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq8">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiSanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq8">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiSanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq8">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiSanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq8">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="LoaiSanPham_Jupiter_stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq9">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="Nuoc_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq9">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="Nuoc_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq9">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="Nuoc_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq9">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="Nuoc_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq9">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="Nuoc_Jupiter_stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq10">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="SanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq10">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="SanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq10">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="SanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq10">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="SanPham_Jupiter_stage" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq10">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="SanPham_Jupiter_stage" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq11">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="sysdiagrams" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq11">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="sysdiagrams" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq11">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="sysdiagrams" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq11">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="sysdiagrams" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq11">
+        <DataSourceID>{3414E4BA-9175-436E-81F3-3CC5F41C9CA9}</DataSourceID>
+        <Table Schema="dbo" Table="sysdiagrams" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+    </Requests>
+  </DataProfileInput>
+  <DataProfileOutput>
+    <Profiles />
+  </DataProfileOutput>
+</DataProfile>]]></ProfileInput>
+        </DataProfilingTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Data Profiling Task"
+          TopLeft="384,175" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
